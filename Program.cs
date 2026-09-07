@@ -1,4 +1,4 @@
-
+ 
 namespace WebLab
 {
     public class Program
@@ -24,6 +24,9 @@ namespace WebLab
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+            app.UseDefaultFiles();
 
             app.UseAuthorization();
 

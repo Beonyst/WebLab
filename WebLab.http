@@ -1,4 +1,4 @@
-@WebLab_HostAddress = http://localhost:7160
+@WebLab_HostAddress = http://localhost:7213
 
 GET {{WebLab_HostAddress}}/weatherforecast/
 Accept: application/json
