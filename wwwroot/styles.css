@@ -1,6 +1,4 @@
-﻿/* ===================================
-   CSS Variables & Reset
-   =================================== */
+﻿/* CSS Variables & Reset */
 :root {
     --primary-color: #667eea;
     --primary-dark: #5a67d8;
@@ -53,9 +51,7 @@ ul {
     list-style: none;
 }
 
-/* ===================================
-   Header & Navigation
-   =================================== */
+/* Header & Navigation */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     padding: 1rem 0;
@@ -102,9 +98,7 @@ ul {
             color: white;
         }
 
-/* ===================================
-   Hero Section
-   =================================== */
+/* Hero Section */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 100%);
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%), url('image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
@@ -134,9 +128,7 @@ ul {
     opacity: 0.9;
 }
 
-/* ===================================
-   Stats Section
-   =================================== */
+/* Stats Section */
 .stats {
     display: flex;
     justify-content: center;
@@ -177,9 +169,7 @@ ul {
     font-weight: 500;
 }
 
-/* ===================================
-   Section Titles
-   =================================== */
+/* Section Titles */
 .section-title,
 .page-title {
     font-size: 2rem;
@@ -202,9 +192,7 @@ ul {
         margin-bottom: 3rem;
     }
 
-/* ===================================
-   Books Grid (Flexbox/Grid)
-   =================================== */
+/* Books Grid (Flexbox/Grid) */
 .books-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -317,9 +305,7 @@ ul {
         transform: translateX(5px);
     }
 
-/* ===================================
-   Book Detail Page
-   =================================== */
+/* Book Detail Page */
 .book-detail {
     padding: 3rem 0;
 }
@@ -379,9 +365,7 @@ ul {
         margin-bottom: 1rem;
     }
 
-/* ===================================
-   Reviews Section
-   =================================== */
+/* Reviews Section */
 .reviews-section {
     padding: 3rem 0 4rem;
 }
@@ -465,9 +449,7 @@ ul {
         margin-bottom: 1.5rem;
     }
 
-/* ===================================
-   Form Styles
-   =================================== */
+/* Form Styles */
 .form-section {
     padding: 2rem 0 4rem;
 }
@@ -560,9 +542,7 @@ ul {
     margin-top: 2rem;
 }
 
-/* ===================================
-   Buttons
-   =================================== */
+/* Buttons */
 .btn {
     padding: 0.875rem 2rem;
     font-size: 1rem;
@@ -601,9 +581,7 @@ ul {
     transform: none !important;
 }
 
-/* ===================================
-   Footer
-   =================================== */
+/* Footer */
 .footer {
     background: var(--text-dark);
     color: white;
@@ -616,9 +594,7 @@ ul {
         opacity: 0.8;
     }
 
-/* ===================================
-   Responsive Design (Media Queries)
-   =================================== */
+/* Responsive Design (Media Queries) */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -730,9 +706,7 @@ ul {
     }
 }
 
-/* ===================================
-   Animations
-   =================================== */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
