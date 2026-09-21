@@ -740,3 +740,41 @@ html {
     background: var(--primary-color);
     color: white;
 }
+
+.real-book-cover {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: block;
+}
+
+.review-form {
+    max-width: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: none;
+    background: transparent;
+}
+
+.review-form .form-group {
+     text-align: left;
+}
+
+.review-form .form-actions {
+    justify-content: flex-start;
+}
+
+.add-review-placeholder {
+    text-align: left;
+}
+
+.add-review-placeholder h3 {
+     text-align: center;
+}
+
+.add-review-placeholder > p {
+    text-align: center;
+}
