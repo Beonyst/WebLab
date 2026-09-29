@@ -28,8 +28,8 @@ namespace WebLab.Controllers
         [HttpPost("/book")]
         public IActionResult AddReview(string name, string text)
         {
-            name = StripTags(name ?? string.Empty).Trim();
-            text = StripTags(text ?? string.Empty).Trim();
+            name = NormalizeLineBreaks(StripTags(name ?? string.Empty)).Trim();
+            text = NormalizeLineBreaks(StripTags(text ?? string.Empty)).Trim();
 
             if (!string.IsNullOrWhiteSpace(name) &&
                 !string.IsNullOrWhiteSpace(text))
@@ -41,6 +41,8 @@ namespace WebLab.Controllers
                 Directory.CreateDirectory(
                     Path.GetDirectoryName(reviewsFile)!
                 );
+
+                EnsureTrailingNewLine();
 
                 System.IO.File.AppendAllText(
                     reviewsFile,
@@ -87,6 +89,36 @@ namespace WebLab.Controllers
                 "<.*?>",
                 string.Empty
             );
+        }
+
+        private static string NormalizeLineBreaks(string value)
+        {
+            // Заменяем любые переносы строк (CRLF / LF / CR) на пробелы
+            return System.Text.RegularExpressions.Regex.Replace(
+                value,
+                "\r\n|\n|\r",
+                " "
+            );
+        }
+
+        private void EnsureTrailingNewLine()
+        {
+            if (!System.IO.File.Exists(reviewsFile))
+            {
+                return;
+            }
+
+            var content = System.IO.File.ReadAllText(reviewsFile);
+
+            if (content.Length > 0 &&
+                !content.EndsWith("\n") &&
+                !content.EndsWith("\r"))
+            {
+                System.IO.File.AppendAllText(
+                    reviewsFile,
+                    Environment.NewLine
+                );
+            }
         }
     }
 
