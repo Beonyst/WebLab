@@ -2,6 +2,7 @@
 
 @{
     var reviews = ViewData["Reviews"] as List<Review> ?? new List<Review>();
+    var book = ViewData["Book"] as BookInfo ?? new BookInfo();
 }
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Мастер и Маргарита | Библиотекарь</title>
+    <title>@book.Title | Библиотекарь</title>
 
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -61,14 +62,9 @@
 
                 <div class="book-detail-cover">
 
-                    <div class="book-cover-large"
-                         style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-
-                        <span class="book-cover-placeholder">
-                            Мастер и Маргарита
-                        </span>
-
-                    </div>
+                    <img src="@book.Image"
+                         alt="Обложка книги «@book.Title»"
+                         class="real-book-cover book-cover-large">
 
                 </div>
 
@@ -76,15 +72,15 @@
                 <div class="book-detail-info">
 
                     <h1 class="book-detail-title">
-                        Мастер и Маргарита
+                        @book.Title
                     </h1>
 
                     <p class="book-detail-author">
-                        Михаил Булгаков
+                        @book.Author
                     </p>
 
                     <p class="book-detail-genre">
-                        Фантастика, Классика, Мистика
+                        @book.Genre
                     </p>
 
 
@@ -104,11 +100,11 @@
 
 
                     <p class="book-detail-year">
-                        Год издания: 1967
+                        Год издания: @book.Year
                     </p>
 
                     <p class="book-detail-pages">
-                        Страниц: 480
+                        Страниц: @book.Pages
                     </p>
 
 
@@ -119,17 +115,11 @@
                         </h2>
 
                         <p>
-                            «Мастер и Маргарита» — роман Михаила Булгакова,
-                            над которым он работал с конца 1920-х годов до своей смерти.
-                            Это философское произведение, сочетающее в себе элементы
-                            мистики, сатиры и любовной истории.
+                            @book.Description1
                         </p>
 
                         <p>
-                            Действие романа разворачивается в Москве 1930-х годов,
-                            куда прибывает дьявол со своей свитой. Параллельно
-                            развивается история любви Мастера и Маргариты,
-                            а также рассказ о Понтии Пилате и Иешуа Га-Ноцри.
+                            @book.Description2
                         </p>
 
                     </div>
@@ -210,7 +200,7 @@
 
 
                 <form method="post"
-                      action="/book"
+                      action="/book/@(ViewContext.RouteData.Values["code"] ?? "master-and-margarita")"
                       class="book-form review-form">
 
 

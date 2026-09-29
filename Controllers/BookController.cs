@@ -15,28 +15,165 @@ namespace WebLab.Controllers
             );
         }
 
+        // Справочник книг: код книги -> данные для страницы "Мастер и Маргарита"
+        private static readonly Dictionary<string, BookInfo> Books =
+            new(StringComparer.OrdinalIgnoreCase)
+            {
+                ["master-and-margarita"] = new BookInfo
+                {
+                    Title = "Мастер и Маргарита",
+                    Author = "Михаил Булгаков",
+                    Genre = "Фантастика, Классика, Мистика",
+                    Year = 1967,
+                    Pages = 480,
+                    Image = "/images/master-and-margarita.jpg",
+                    Description1 = "«Мастер и Маргарита» — роман Михаила Булгакова," +
+                        " над которым он работал с конца 1920-х годов до своей смерти." +
+                        " Это философское произведение, сочетающее в себе элементы" +
+                        " мистики, сатиры и любовной истории.",
+                    Description2 = "Действие романа разворачивается в Москве 1930-х годов," +
+                        " куда прибывает дьявол со своей свитой. Параллельно" +
+                        " развивается история любви Мастера и Маргариты," +
+                        " а также рассказ о Понтии Пилате и Иешуа Га-Ноцри.",
+                },
+                ["1984"] = new BookInfo
+                {
+                    Title = "1984",
+                    Author = "Джордж Оруэлл",
+                    Genre = "Антиутопия, Классика",
+                    Year = 1949,
+                    Pages = 328,
+                    Image = "/images/1984.png",
+                    Description1 = "«1984» — антиутопия Джорджа Оруэлла, один из самых" +
+                        " известных романов о тоталитарном обществе в мировой литературе.",
+                    Description2 = "Действие происходит в государстве Океания, где за всеми" +
+                        " следит Большой Брат, а Уинстон Смит пытается сохранить" +
+                        " человеческое достоинство и способность мыслить свободно.",
+                },
+                ["crime-and-punishment"] = new BookInfo
+                {
+                    Title = "Преступление и наказание",
+                    Author = "Фёдор Достоевский",
+                    Genre = "Классика, Психология",
+                    Year = 1866,
+                    Pages = 671,
+                    Image = "/images/crime-and-punishment.jpg",
+                    Description1 = "«Преступление и наказание» — роман Фёдора Достоевского" +
+                        " о студенте Родионе Раскольникове, решившемся на убийство ради" +
+                        " проверки собственной теории.",
+                    Description2 = "Произведение глубоко исследует психологию преступника," +
+                        " темы совести, страдания и возможного искупления.",
+                },
+                ["great-gatsby"] = new BookInfo
+                {
+                    Title = "Великий Гэтсби",
+                    Author = "Фрэнсис Скотт Фицджеральд",
+                    Genre = "Классика, Драма",
+                    Year = 1925,
+                    Pages = 180,
+                    Image = "/images/great-gatsby.jpg",
+                    Description1 = "«Великий Гэтсби» — роман Фрэнсиса Скотта Фицджеральда," +
+                        " летопись «века джаза» и американской мечты.",
+                    Description2 = "История загадочного миллионера Джей Гэтсби, который" +
+                        " устраивает роскошные вечеринки ради одной единственной цели —" +
+                        " вернуть любовь Дэйзи Бьюкенен.",
+                },
+                ["harry-potter"] = new BookInfo
+                {
+                    Title = "Гарри Поттер и философский камень",
+                    Author = "Дж. К. Роулинг",
+                    Genre = "Фэнтези, Приключения",
+                    Year = 1997,
+                    Pages = 432,
+                    Image = "/images/Harry-Potter-and-the-Philosopher's-Stone.jpg",
+                    Description1 = "«Гарри Поттер и философский камень» — первая книга" +
+                        " всемирно известной серии о юном волшебнике.",
+                    Description2 = "Одиннадцатилетний Гарри узнаёт, что он волшебник," +
+                        " и отправляется учиться в школу Хогвартс, где его ждут дружба," +
+                        " тайны и первое противостояние с Тёмным Лордом.",
+                },
+                ["lord-of-the-rings"] = new BookInfo
+                {
+                    Title = "Властелин колец",
+                    Author = "Дж. Р. Р. Толкин",
+                    Genre = "Фэнтези, Эпос",
+                    Year = 1954,
+                    Pages = 1178,
+                    Image = "/images/lord-of-the-rings.jpg",
+                    Description1 = "«Властелин колец» — эпическое фэнтези Дж. Р. Р. Толкина" +
+                        " о борьбе за судьбу Средиземья.",
+                    Description2 = "Хоббит Фродо получает Кольцо Всевластья и должен" +
+                        " уничтожить его в огне Роковой горы, пройдя через бесчисленные" +
+                        " опасности вместе с Братством Кольца.",
+                },
+                ["catcher-in-the-rye"] = new BookInfo
+                {
+                    Title = "Над пропастью во ржи",
+                    Author = "Джером Д. Сэлинджер",
+                    Genre = "Классика, coming-of-age",
+                    Year = 1951,
+                    Pages = 214,
+                    Image = "/images/catcher-in-the-rye.jpeg",
+                    Description1 = "«Над пропастью во ржи» — единственный роман Джерома" +
+                        " Сэлинджера и культовая книга о взрослении.",
+                    Description2 = "Шестнадцатилетний Холден Колфилд бродит по Нью-Йорку," +
+                        " размышляя о школе, лицемерии взрослых и о том, как уберечь" +
+                        " детей от падения в пропасть взрослой жизни.",
+                },
+                ["fight-club"] = new BookInfo
+                {
+                    Title = "Бойцовский клуб",
+                    Author = "Чак Паланик",
+                    Genre = "Психология, Философия",
+                    Year = 1996,
+                    Pages = 224,
+                    Image = "/images/Fight-club.jpg",
+                    Description1 = "«Бойцовский клуб» — роман Чака Паланика, едкая сатира" +
+                        " на общество потребления.",
+                    Description2 = "Рассказчик, страдающий бессонницей, встречает" +
+                        " харизматичного Тайлера Дёрдена, и вместе они основывают" +
+                        " подпольный бойцовский клуб, который перерастает в нечто большее.",
+                },
+            };
+
         [HttpGet("/book")]
-        public IActionResult Index()
+        [HttpGet("/book/{code}")]
+        public IActionResult Index(string code = "master-and-margarita")
         {
-            var reviews = ReadReviews();
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                code = "master-and-margarita";
+            }
+
+            if (!Books.TryGetValue(code, out var book))
+            {
+                return NotFound($"Книга «{WebUtility.HtmlEncode(code)}» не найдена.");
+            }
+
+            var reviews = ReadReviews(book.Title);
 
             ViewData["Reviews"] = reviews;
+            ViewData["Book"] = book;
 
             return View("Book");
         }
 
         [HttpPost("/book")]
-        public IActionResult AddReview(string name, string text)
+        [HttpPost("/book/{code}")]
+        public IActionResult AddReview(string name, string text, string code = "master-and-margarita")
         {
             name = NormalizeLineBreaks(StripTags(name ?? string.Empty)).Trim();
             text = NormalizeLineBreaks(StripTags(text ?? string.Empty)).Trim();
 
-            if (!string.IsNullOrWhiteSpace(name) &&
+            if (!string.IsNullOrWhiteSpace(code) &&
+                Books.TryGetValue(code, out var book) &&
+                !string.IsNullOrWhiteSpace(name) &&
                 !string.IsNullOrWhiteSpace(text))
             {
                 var date = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
 
-                var review = $"{name}|{text}|{date}";
+                // Формат строки: Книга|Имя|Текст|Дата
+                var review = $"{book.Title}|{name}|{text}|{date}";
 
                 Directory.CreateDirectory(
                     Path.GetDirectoryName(reviewsFile)!
@@ -50,10 +187,10 @@ namespace WebLab.Controllers
                 );
             }
 
-            return Redirect("/book");
+            return Redirect($"/book/{code}");
         }
 
-        private List<Review> ReadReviews()
+        private List<Review> ReadReviews(string bookTitle)
         {
             var reviews = new List<Review>();
 
@@ -66,16 +203,37 @@ namespace WebLab.Controllers
 
             foreach (var line in lines)
             {
-                var parts = line.Split('|', 3);
+                var parts = line.Split('|', 4);
 
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
+                    // Новый формат: Книга|Имя|Текст|Дата
+                    if (!string.Equals(parts[0], bookTitle, StringComparison.Ordinal))
+                    {
+                        continue;
+                    }
+
                     reviews.Add(new Review
                     {
-                        Name = StripTags(parts[0]),
-                        Text = StripTags(parts[1]),
-                        Date = StripTags(parts[2])
+                        Name = StripTags(parts[1]),
+                        Text = StripTags(parts[2]),
+                        Date = StripTags(parts[3])
                     });
+                }
+                else
+                {
+                    var legacyParts = line.Split('|', 3);
+
+                    if (legacyParts.Length == 3)
+                    {
+                        // Старый формат без привязки к книге: Имя|Текст|Дата
+                        reviews.Add(new Review
+                        {
+                            Name = StripTags(legacyParts[0]),
+                            Text = StripTags(legacyParts[1]),
+                            Date = StripTags(legacyParts[2])
+                        });
+                    }
                 }
             }
 
@@ -129,5 +287,24 @@ namespace WebLab.Controllers
         public string Text { get; set; } = string.Empty;
 
         public string Date { get; set; } = string.Empty;
+    }
+
+    public class BookInfo
+    {
+        public string Title { get; set; } = string.Empty;
+
+        public string Author { get; set; } = string.Empty;
+
+        public string Genre { get; set; } = string.Empty;
+
+        public int Year { get; set; }
+
+        public int Pages { get; set; }
+
+        public string Image { get; set; } = string.Empty;
+
+        public string Description1 { get; set; } = string.Empty;
+
+        public string Description2 { get; set; } = string.Empty;
     }
 }
