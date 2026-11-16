@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить книгу | Библиотекарь</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/index.html" class="logo">📚 Библиотекарь</a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Главная</a></li>
+                <li><a href="/catalog">Каталог</a></li>
+                <li><a href="/add" class="active">Добавить книгу</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1 class="page-title">Добавить новую книгу</h1>
+            <p class="page-subtitle">Заполните форму — книга будет сохранена в базу данных books_db (таблица books)</p>
+        </section>
+
+        <section class="form-section">
+            <form class="book-form" action="/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Название книги *</label>
+                    <input type="text" id="title" name="title" placeholder="Введите название книги" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Автор *</label>
+                    <input type="text" id="author" name="author" placeholder="Введите имя автора" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="genre">Жанр</label>
+                        <select id="genre" name="genre">
+                            <option value="">Выберите жанр</option>
+                            <option value="Классика">Классика</option>
+                            <option value="Фэнтези">Фэнтези</option>
+                            <option value="Научная фантастика">Научная фантастика</option>
+                            <option value="Детектив">Детектив</option>
+                            <option value="Романтика">Романтика</option>
+                            <option value="Триллер">Триллер</option>
+                            <option value="Ужасы">Ужасы</option>
+                            <option value="Биография">Биография</option>
+                            <option value="История">История</option>
+                            <option value="Философия">Философия</option>
+                            <option value="Психология">Психология</option>
+                            <option value="Антиутопия">Антиутопия</option>
+                            <option value="Другое">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coverUrl">Ссылка на обложку (URL)</label>
+                        <input type="url" id="coverUrl" name="coverUrl" placeholder="/images/... или https://...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover">Обложка книги (файл)</label>
+                    <div class="file-upload">
+                        <input type="file" id="cover" name="cover" accept="image/*">
+                        <p>Перетащите изображение сюда или нажмите для выбора</p>
+                        <span class="file-hint">PNG, JPG до 5MB (файл сохранится в wwwroot/covers)</span>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Рецензия (необязательно)</h2>
+                <p class="page-subtitle">Если заполнить — отзыв сразу добавится в таблицу reviews</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reviewName">Ваше имя</label>
+                        <input type="text" id="reviewName" name="reviewName" maxlength="100" placeholder="Как подписать отзыв">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewRating">Оценка</label>
+                        <select id="reviewRating" name="reviewRating">
+                            <option value="">Не оценено</option>
+                            <option value="5">★★★★★ (5)</option>
+                            <option value="4">★★★★☆ (4)</option>
+                            <option value="3">★★★☆☆ (3)</option>
+                            <option value="2">★★☆☆☆ (2)</option>
+                            <option value="1">★☆☆☆☆ (1)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Ваша рецензия</label>
+                    <textarea id="reviewText" name="reviewText" rows="6" placeholder="Поделитесь своими впечатлениями о книге..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Добавить книгу в БД</button>
+                    <button type="reset" class="btn btn-secondary">Очистить форму</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Личный книжный дневник - лабораторная работа по web.</p>
+        </div>
+    </footer>
+</body>
+</html>
