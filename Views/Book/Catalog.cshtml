@@ -1,0 +1,74 @@
+@using WebLab.Models
+@{
+    var books = ViewData["Books"] as List<Book> ?? new List<Book>();
+
+    string Stars(double rating)
+    {
+        var full = (int)Math.Round(rating, MidpointRounding.AwayFromZero);
+        return new string('★', Math.Clamp(full, 0, 5)) + new string('☆', 5 - Math.Clamp(full, 0, 5));
+    }
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг | Библиотекарь</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/index.html" class="logo">📚 Библиотекарь</a>
+            <ul class="nav-links">
+                <li><a href="/index.html">Главная</a></li>
+                <li><a href="/catalog" class="active">Каталог</a></li>
+                <li><a href="/add">Добавить книгу</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="featured-books container">
+            <h2 class="section-title">Каталог книг</h2>
+            <p class="page-subtitle" style="text-align: center; margin-bottom: 3rem;">
+                Все книги из базы данных books_db (@books.Count шт.)
+            </p>
+            <div class="books-grid">
+                @foreach (var book in books)
+                {
+                    <article class="book-card">
+                        <div class="book-cover">
+                            @if (!string.IsNullOrEmpty(book.CoverUrl))
+                            {
+                                <img src="@book.CoverUrl"
+                                     alt="@book.Title"
+                                     class="real-book-cover">
+                            }
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">@book.Title</h3>
+                            <p class="book-author">@book.Author</p>
+                            <p class="book-genre">@book.Genre</p>
+                            <div class="book-rating">
+                                @foreach (var star in Stars(book.AvgRating))
+                                {
+                                    <span class="star">@star</span>
+                                }
+                            </div>
+                            <a href="/book/@book.Id" class="book-link">Подробнее →</a>
+                        </div>
+                    </article>
+                }
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Личный книжный дневник - лабораторная работа по web.</p>
+        </div>
+    </footer>
+</body>
+</html>

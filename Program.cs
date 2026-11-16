@@ -8,6 +8,11 @@ namespace WebLab
 
             builder.Services.AddControllersWithViews();
 
+            // Подключение к MySQL/MariaDB (база данных books_db)
+            builder.Services.AddSingleton(new WebLab.Models.DbConfig(
+                builder.Configuration.GetConnectionString("BooksDb")
+                    ?? "server=localhost;port=3306;database=books_db;user=root;password=root"));
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
