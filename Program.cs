@@ -22,9 +22,13 @@ namespace WebLab
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                // В dev-режиме без настроенного HTTPS редирект мешает локальному запуску
+                app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
+            else
+            {
+                app.UseHttpsRedirection();
+            }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
